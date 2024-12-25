@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkout | Gracious Garments</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+<div class="container">
+
+    <form action="" onsubmit="return validateForm(event)">
+
+        <div class="row">
+            
+            <div class="col">
+
+                <h1 class="title">Details</h1>
+
+                <div class="inputBox">
+                    <span>Full Name:</span>
+                    <input type="text" id="fullName" placeholder="Baber Azam" required class="inputs">
+                </div>
+                <div class="inputBox">
+                    <span>Phone Number:</span>
+                    <input type="tel" id="phoneNumber" placeholder="+92 1234567891" required class="inputs">
+                </div>
+                <div class="inputBox">
+                    <span>Email:</span>
+                    <input type="email" id="email" placeholder="example@example.com" required class="inputs">
+                </div>
+                <div class="inputBox">
+                    <span>Address:</span>
+                    <input type="text" id="address" placeholder="House - Street - Locality" required class="inputs">
+                </div>
+                <div class="inputBox">
+                    <span>City:</span>
+                    <input type="text" id="city" placeholder="Karachi" required class="inputs">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>State:</span>
+                        <input type="text" id="state" placeholder="Pakistan" required class="inputs">
+                    </div>
+                    <div class="inputBox">
+                        <span>Zip Code:</span>
+                        <input type="text" id="zipCode" placeholder="123 456" class="inputs">
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+                <h3 class="title">Payment</h3>
+                <!-- <div class="inputBox"> -->
+                    
+                        <div class="myBox">
+                            <input type="radio"><span>Cash on Delivery</span>
+                            <p style="font-size: x-small;margin-top: px;">pay with cash upon delivery</p>
+                        </div>
+                        <div class="inputBox">
+                            <span>Order note (optional)</span>
+                            <input type="text" placeholder="Notes about your order, e.g. special note for delivery" class="inputs">
+                        </div>
+                            <div class="textul">
+                                <ul>
+                                <li>No online payment required.</li>
+                                <li>Pay when your order arrives at your doorstep.</li>
+                                <li>Ensure your details are correct to avoid delivery issues.</li>
+                            </ul>
+                            </div>
+                        
+                         <div class="term">
+                    <span>By selecting Cash on Delivery, you agree to our <a href="#">Terms and Conditions</a>.</span>
+                </div>
+                <div class="priv">
+                    <span>Your personal data will be used to process your order, support your experience throughout this website, andfor other purposes described in our <a href="#">privacy policy</a></span>
+                </div> 
+                    </div>
+            
+     
+
+                    <input type="submit" onclick="sendmaila()" value="Order Placed" class="submit-btn">
+            </div>
+    
+
+
+        
+
+    </form>
+        <!-- <div class="img"><img src="../images/product-1.png" alt=""></div> -->
+
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+<script src="emailjs-functions.js"></script> <!-- Link to the new file -->
+
+<script>
+function validateForm(event) {
+    event.preventDefault();
+    
+    
+    // Check for empty fields
+    
+    
+    // Validate phone number format
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var phoneRegex = /^[\+]?[0-9]{10,15}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+        alert('Please enter a valid phone number.');
+        return false;
+    }
+    
+    // Validate email format
+    var email = document.getElementById('email').value;
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+    }
+    
+    // Validate zip code format
+    var zipCode = document.getElementById('zipCode').value;
+    var zipRegex = /^[0-9]{3}\s?[0-9]{3}$/;
+    if (zipCode && !zipRegex.test(zipCode)) {
+        alert('Please enter a valid zip code.');
+        return false;
+    }
+
+    // Prepare the data object
+    
+    
+    // Send the email
+//     sendEmail(obj).then(function(response) {
+//         showSuccessMessage();
+//     }).catch(function(error) {
+//         showErrorMessage();
+//     });
+//     var inp = document.getElementsByClassName('inputs');
+//     (function () {
+//     emailjs.init("SP5uxVh1zRPpXtRtv");
+// })();
+
+// function sendEmail(obj) {
+//     return emailjs.send('service_l7tawyj', 'template_mvdj0oo', obj);
+// }
+
+// function showSuccessMessage() {
+//     Swal.fire({
+//         title: "Success!",
+//         text: "Order placed successfully!",
+//         icon: "success"
+//     });
+// }
+
+// function showErrorMessage() {
+//     Swal.fire({
+//         title: "Error",
+//         text: "There was an issue placing your order. Please try again.",
+//         icon: "error"
+//     });
+//}
+
+}
+    return false; // Prevent the default form submission for now
+</script>
+
+<script>
+    (function () {
+            emailjs.init({
+                publicKey: "SP5uxVh1zRPpXtRtv",
+            });
+        })();
+        function sendmaila(){
+            if (inp[0].value == '' || inp[1].value == '' || inp[2].value == '' || inp[3].value == '' || inp[4].value == '' || inp[5].value == '' || inp[6].value == '') {
+        alert('Please fill in all the fields.');
+        return false;
+    }
+            var inp = document.getElementsByClassName('inputs')
+            var obj = {
+        "name": inp[0].value,
+        "number": inp[1].value,
+        "email": inp[2].value,
+        "address": inp[3].value,
+        "city": inp[4].value,
+        "state": inp[5].value,
+        "zip code": inp[6].value,
+        "info": inp[7].value
+    }
+        emailjs.send('service_l7tawyj', 'template_mvdj0oo', obj);
+        Swal.fire({
+        title: "Success!",
+        text: "Order placed successfully!",
+        icon: "success"
+            });
+            window.location.href= "#"
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
